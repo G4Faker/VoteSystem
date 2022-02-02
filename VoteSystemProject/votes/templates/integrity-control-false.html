@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Vote - Система онлайн голосования</title>
+{% endblock %}
+
+{% block body %}
+    <div class="info-page-container">
+        {% load static %}
+        <img src="{% static '/icons/logo.svg' %}" alt=""
+            width="300" height="300"
+        >
+        <div class="information">
+            <h1>
+                Проверка целостности показала несовпадение результатов!
+            </h1>
+            <a class="to-vote" href="{% url 'votes' %}">
+                Перейти к голосованиям
+            </a>
+        </div>
+    </div>
+{% endblock %}

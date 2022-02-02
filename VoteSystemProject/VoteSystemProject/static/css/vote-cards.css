@@ -1,0 +1,121 @@
+.votes-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.votes-filters {
+    width: 200px;
+    padding-top: 20px;
+    border-right: 1px solid #ECECEC;
+}
+
+.votes-filters-title {
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+}
+
+.votes-filter-link {
+    display: block;
+    width: 100%;
+    color: #4C4C4C;
+    height: 50px;
+    line-height: 50px;
+}
+
+.votes-filter-link:hover {
+    color: #000;
+    background: #F0F0F0;
+}
+
+.votes-filter-link.active {
+    background: #E4DDF0;
+    color: #6B40B9;
+}
+
+.votes-filter-link.active:hover {
+    background: rgba(103, 58, 183,.3);
+}
+
+.votes-filter-link > span {
+    padding-left: 25px;
+}
+
+.votes-cards-container {
+    width: calc(100% - 250px);
+    display: flex;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vote-card-divider {
+    color: #ececec;
+}
+
+.vote-card {
+    min-width: 280px;
+    max-width: 400px;
+    width: inherit;
+    padding: 20px;
+    margin: 20px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+}
+
+.vote-card-title {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 10px;
+}
+
+.vote-card-subtitle {
+    font-size: 14px;
+    color: #7C7C7C;
+}
+
+.vote-card-description {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.candidates > .title {
+    text-align: center;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.vote-card-date {
+    font-size: 12px;
+    line-height: 20px;
+    color: #7C7C7C;
+}
+
+.vote-card-bottom-line {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.vote-card-to-detail {
+    font-size: 14px;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.vote-card-to-detail:hover {
+    background-color: #F4F4F4;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}

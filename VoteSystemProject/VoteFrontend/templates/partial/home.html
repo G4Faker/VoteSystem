@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Vote - Система онлайн голосования</title>
+<meta name="description" content="Главная страница системы онлайн голосования"/>
+<meta name="keywords" content="голосование"/>
+{% endblock %}
+
+{% block body %}
+    <div class="home-container">
+        <div class="preview-container">
+            <div class="preview-container__content">
+                <h1>
+                    Vote
+                </h1>
+                <h2>
+                    Система онлайн голосования
+                </h2>
+                <div class="link-cont">
+                    <a href="{% url 'votes' %}">
+                        Перейти к голосованиям
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

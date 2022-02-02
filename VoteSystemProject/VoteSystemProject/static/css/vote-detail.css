@@ -1,0 +1,176 @@
+.vote-container {
+}
+
+hr {
+    color: #ececec;
+}
+
+.vote-title-line {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    background: #673AB7;
+}
+
+.back-to-votes {
+    margin: 20px;
+    color: #fff;
+    text-decoration: underline !important;
+}
+
+.vote-title-line > h1 {
+    margin: 0px;
+    padding: 28px 10px;
+    margin-left: 20px;
+    color: #FFF;
+    font-weight: lighter;
+}
+
+.vote-title-line > .empty {
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.vote-detail-container {
+    margin: 20px auto;
+    max-width: 800px;
+    width: calc(100% - 40px);
+}
+
+.vote-status-card {
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.vote-status-card-title {
+    font-weight: bold;
+}
+
+.vote-status-card-value {
+}
+
+.status {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.vote-manager-action-button {
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.button-form > button {
+    margin: 0px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+    font-weight: inherit;
+    font-size: 14px;
+    font-family: 'Roboto';
+}
+
+.button-form > button:hover {
+    background-color: #F4F4F4;
+}
+
+.vote-description-card {
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+    margin-bottom: 20px;
+}
+
+.vote-description-card-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.vote-description-card-content {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.candidates-card {
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+    margin-bottom: 20px;
+}
+
+.candidates-card-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.candidates {
+    display: flex;
+    flex-direction: column;
+}
+
+.candidate {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.candidate-left-half {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.candidate-image > img {
+    width: 30px;
+    height: 30px;
+}
+
+.candidate-info {
+    font-size: 16px;
+    margin-left: 15px;
+    max-width: 400px;
+}
+
+.candidate-name {
+    line-height: 19px;
+}
+
+.candidate-description {
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 10px;
+}
+
+.candidate > button {
+    border: 1px solid #000;
+    height: 40px;
+    width: 220px;
+    border-radius: 15px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 400;
+    transition: 0.5s;
+}
+
+.candidate > button:hover {
+    color: #fff;
+    background: linear-gradient(to bottom right, #4d79f6, #f14586);
+}
+

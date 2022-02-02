@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ vote.title }} | Vote</title>
+<meta name="keywords" content="голосование"/>
+{% endblock %}
+
+{% block body %}
+    {% load votes_extras %}
+    <section class="vote-container">
+        <div class="vote-title-line">
+            <a class="back-to-votes" href="{% url 'votes' %}">
+                {% load static %}
+                <img src="{% static '/icons/back.png' %}" alt=""
+                    width="30" height="30"
+                >
+            </a>
+            <h1>
+                {{ vote.title }}
+            </h1>
+            <div class="empty"></div>
+        </div>
+        <div class="vote-detail-container">
+            <div class="vote-status-card">
+                <div class="vote-status-card-title">
+                    Статус голосвания
+                </div>
+                <div class="vote-status-card-value">
+                    {% if not vote.start %}
+                        Не начато
+                    {% elif vote.start and not vote.complete %}
+                        Идет
+                    {% elif vote.start and vote.complete %}
+                        Завершено
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="vote-description-card">
+                <div class="vote-description-card-title">
+                    Описание
+                </div>
+                <div class="vote-description-card-content">
+                    {{ vote.description }}
+                </div>
+            </div>
+
+            {% if user.username|check_includes:users_voices and not vote.complete %}
+                <div class="voted">
+                    <p>
+                        Ваш голос учтен.
+                    </p>
+                </div>
+            {% endif %}
+
+            <div class="candidates-card">
+                {% if not vote.complete %}
+                    <div class="candidates-card-title">
+                        Кандидаты данного голосования
+                    </div>
+                    <div class="candidates">
+                        {% for candidate in candidates_list %}
+                            <div class="candidate">
+                                <div class="candidate-left-half">
+                                    <div class="candidate-image">
+                                        {% load static %}
+                                        <img src="{% static '/icons/face.svg' %}" alt=""
+                                            width="30" height="30"
+                                        >
+                                    </div>
+                                    <div class="candidate-info">
+                                        <div class="candidate-name">
+                                            {{ candidate.name }}
+                                        </div>
+                                        <!--
+                                        <div class="candidate-type">
+                                            Должность: {{ candidate.type }}
+                                        </div>
+                                        -->
+                                        <div class="candidate-description">
+                                            {{ candidate.description }}
+                                        </div>
+                                        <!--
+                                        <div class="candidate-group">
+                                            Партия: {{ candidate.group }}
+                                        </div>
+                                        -->
+                                    </div>
+                                </div>
+                                {% if vote.start and not user.is_staff and not user.is_superuser and not user.username|check_includes:users_voices and user.username %}
+                                    <form class="candidate-right-half button-form" method="post"
+                                        action="{% url 'user_voted' %}"
+                                    >
+                                        {% csrf_token %}
+                                        <input hidden name="input-value" type="text" value="user_voted">
+                                        <input hidden name="vote-id" type="text" value="{{ vote.id }}">
+                                        <input hidden name="user-id" type="text" value="{{ user.id }}">
+                                        <input hidden name="candidate-value" type="text" value="{{ '10'|int_pow:forloop.counter0 }}">
+                                        <button type="submit">
+                                            Проголосовать
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% elif vote.complete %}
+                    <div class="candidates-card-title">
+                        Победитель данного голосования
+                    </div>
+                    <div class="candidate">
+                        <div class="candidate-left-half">
+                            <div class="candidate-image">
+                                {% load static %}
+                                <img src="{% static '/icons/face.svg' %}" alt=""
+                                    width="30" height="30"
+                                >
+                            </div>
+                            <div class="candidate-info">
+                                <div class="candidate-name">
+                                    {{ vote.candidate }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if user.is_staff and not user.is_superuser %}
+                {% if not vote.complete %}
+                    <div class="vote-manager-action-button">
+                        {% if not vote.start %}
+                            <form class="button-form" method="post"
+                                action="{% url 'start_vote' %}"
+                            >
+                                {% csrf_token %}
+                                <input hidden name="input-value" type="text" value="start-vote">
+                                <input hidden name="vote-id" type="text" value="{{ vote.id }}">
+                                <button type="submit">
+                                    Начать голосование
+                                </button>
+                            </form>
+                        {% else %}
+                            <form class="button-form" method="post"
+                                action="{% url 'complete_vote' %}"
+                            >
+                                {% csrf_token %}
+                                <input hidden name="input-value" type="text" value="complete-vote">
+                                <input hidden name="vote-id" type="text" value="{{ vote.id }}">
+                                <button type="submit">
+                                    Подсчет голосов
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if user.is_staff and user.is_superuser %}
+                <div class="vote-manager-action-button">
+                    <form class="button-form" method="post"
+                            action="{% url 'integrity_control' %}"
+                        >
+                            {% csrf_token %}
+                            <input hidden name="vote-id" type="text" value="{{ vote.id }}">
+                            <button type="submit">
+                                Проверка целостности
+                            </button>
+                        </form>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

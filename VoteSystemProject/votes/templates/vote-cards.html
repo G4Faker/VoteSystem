@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Vote - Система онлайн голосования</title>
+<meta name="description" content="Главная страница системы онлайн голосования"/>
+<meta name="keywords" content="голосование"/>
+{% endblock %}
+
+
+{% block body %}
+    <section class="votes-container">
+        <section class="votes-filters">
+            <div class="votes-filters-title">
+                Статус голосования
+            </div>
+            <a href="{% url 'votes' %}" class="votes-filter-link active">
+                <span>Любой</span>
+            </a>
+            <a href="{% url 'run-votes' %}" class="votes-filter-link">
+                <span>Идет</span>
+            </a>
+            <a href="{% url 'complete-votes' %}" class="votes-filter-link">
+                <span>Завершено</span>
+            </a>
+            <a href="{% url 'dont-run-votes' %}" class="votes-filter-link">
+                <span>Не начато</span>
+            </a>
+        </section>
+        <section class="votes-cards-container">
+            {% for vote in votes_list %}
+                <div class="vote-card">
+                    <div class="vote-card-title mb-10">
+                        {{ vote.title }}
+                    </div>
+                    <div class="vote-card-subtitle mb-10">
+                        {% if not vote.start %}
+                            Не начато
+                        {% elif vote.start and not vote.complete %}
+                            Идет
+                        {% elif vote.start and vote.complete %}
+                            Завершено
+                        {% endif %}
+                    </div>
+                    <div class="vote-card-description mb-15">
+                        {{ vote.description }}
+                    </div>
+                    <div class="vote-card-date mb-15">
+                        Дата начала голосования: {{ vote.date }}
+                    </div>
+                    <hr class="vote-card-divider">
+                    <div class="vote-card-bottom-line">
+                        <a class="vote-card-to-detail" href="{% url 'vote-detail' vote.pk %}">
+                            Подробнее
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </section>
+{% endblock %}

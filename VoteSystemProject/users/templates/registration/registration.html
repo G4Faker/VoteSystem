@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Vote - Регистрация</title>
+    <meta name="description" content="Регистрация в системе онлайн голосования"/>
+    <meta name="keywords" content="голосование"/>
+{% endblock %}
+
+{% block body %}
+    <section class="register-container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1>Регистрация</h1>
+            {{ form.as_p }}
+<!--            <input type="text" placeholder="Ф.И.О.">-->
+<!--            <input type="email" placeholder="E-mail">-->
+<!--            <input type="text" placeholder="Телефон">-->
+<!--            <input type="password" placeholder="Пароль">-->
+<!--            <input type="password" placeholder="Подтверждение пароля">-->
+<!--            <button type="submit">-->
+<!--                Регистрация-->
+<!--            </button>-->
+            <button>
+                Регистрация
+            </button>
+        </form>
+        <a class="auth-link" href="/auth/login">Есть акккаунт?</a>
+    </section>
+{% endblock %}

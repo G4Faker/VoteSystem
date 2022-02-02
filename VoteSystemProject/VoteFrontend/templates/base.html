@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block head %}
+  <title>Title</title>
+  {% endblock %}
+  {% load static %}
+  <link rel="icon" href="{% static '/icons/logo.svg' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/roboto.css' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/vote-cards.css' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/vote-detail.css' %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/info-pages.css' %}">
+</head>
+<body>
+  <div class="main-cont">
+    {% include "partial/header.html" %}
+    <div id="all-content">
+      {% block body %}
+      {% endblock %}
+    </div>
+  </div>
+  {% include "partial/footer.html" %}
+</body>
+</html>

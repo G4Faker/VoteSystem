@@ -1,0 +1,40 @@
+.info-page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 64px;
+}
+
+.info-page-container > img {
+    margin-right: 30px;
+}
+
+.information {
+    text-align: center;
+}
+
+.information > h1 {
+    font-weight: 400;
+}
+
+.information > h1 {
+    font-weight: 400;
+    margin: 24px 0px;
+}
+
+.information > p {
+    font-weight: 400;
+    margin: 20px 0px;
+}
+
+.information > .to-vote {
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+    background: #673ab7;
+}
+
+.information > .to-vote:hover {
+    background: #3B2169;
+}

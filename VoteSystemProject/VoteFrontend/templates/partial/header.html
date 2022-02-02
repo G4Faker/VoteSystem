@@ -1,0 +1,55 @@
+<header>
+    <div class="left">
+        <div class="vote-to-home">
+            {% load static %}
+            <img src="{% static '/icons/logo-before.svg' %}" alt=""
+                width="24" height="24"
+            >
+            <a href="/">
+                Vote
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="username-container">
+                {% load static %}
+                <img src="{% static '/icons/account.png' %}" alt=""
+                    width="24" height="24"
+                >
+                {{ user.username }}
+            </div>
+            {% if user.is_staff %}
+                <div class="to-admin">
+                    <a href="/admin">
+                        {% if user.is_superuser %}
+                            Панель администратора
+                        {% else %}
+                            Панель менеджера
+                        {% endif %}
+                    </a>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% if user.is_authenticated %}
+        <a class="right" href="/auth/logout">
+            Выход
+            {% load static %}
+            <img src="{% static '/icons/login.png' %}" alt=""
+                width="24" height="24"
+            >
+        </a>
+    {% elif not '/auth' in request.path %}
+        <a class="right" href="/auth/login">
+            Вход
+            {% load static %}
+            <img src="{% static '/icons/login.png' %}" alt=""
+                width="24" height="24"
+            >
+        </a>
+    {% else %}
+        <a class="right" href="/home">
+            Главная
+        </a>
+    {% endif %}
+
+</header>
